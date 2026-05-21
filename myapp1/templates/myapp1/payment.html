@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+</head>
+<body>
+<center>
+<h2>Pay ₹{{ amount }} to Unlock Videos</h2>
+
+<button id="pay-btn" style="width:150px; height:50px; background-color:orange; color: white;">Pay Now</button>
+</center>
+<input type="hidden" id="csrf-token" value="{{ csrf_token }}">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ key_id }}",  // sent from Django view
+    "amount": "{{ amount }}00",  // in paise
+    "currency": "INR",
+    "order_id": "{{ order_id }}",
+    
+    
+    
+
+    "handler": function (response){
+
+        // 🔹 Send payment data to backend
+        fetch("/verify-payment/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": document.getElementById("csrf-token").value
+            },
+            body: JSON.stringify({
+                "payment_id": response.razorpay_payment_id,
+                "order_id": response.razorpay_order_id,
+                "signature": response.razorpay_signature,
+                "teacher_id": "{{ teacher_id }}"
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === "success"){
+                alert("Payment Success!");
+                window.location.href = "/videos/{{ teacher_id }}/";
+            } else {
+                alert("Payment Failed!");
+            }
+        });
+
+    }
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('pay-btn').onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+
+</body>
+</html>

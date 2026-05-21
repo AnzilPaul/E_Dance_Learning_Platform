@@ -1,0 +1,154 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <title>E Dance</title>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style1.css' %}" />
+        <style>
+            .cls1{
+                color:white;
+                font-size:20px;
+            }
+            .cls2{
+                font-size:18px;
+            }
+            .rectangle{
+                width:300px;
+                height:180px;
+                border:0;
+                background-color:white;
+            }
+            .nounderline{
+                text-decoration: none;
+            } 
+            .video-container{
+                position:relative;
+                display:inline-block;
+            }
+            .watermark{
+                position:absolute;
+                top:10px;
+                left:10px;
+                color:white;
+                opacity:0.6;
+                font-size:18px;
+                pointer-events:none;
+            }
+            .blur{
+                filter:blur(10px);
+            }
+            
+        </style>
+    </head>
+    <body oncontextmenu="return false;">
+        <div style="background-color:#00adb5;">
+            <table>
+                <tr>
+                    <td><img src="{% static 'images/dancelogo3.jpg' %}" style="width:50px; height:50px;" /></td>
+                    <!--<td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1 nounderline">Home</a></td>-->
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'home2' %}" class="cls1 nounderline">Dance Hub</a></td>
+                    <!--<td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1 nounderline">About Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1 nounderline">Contact Us</a></td>-->
+                    <td>
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    </td>
+                    <td>
+                    {% if user.is_authenticated %}
+                        &emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_logout' %}" class="cls1 nounderline">Logout</a>
+                    {% else %}
+                            &emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_login' %}" class="cls1 nounderline">Login</a>
+                    {% endif %}
+                    </td>
+                            <!--<td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1"><img src="{% static 'images/notify logo.png' %}" style="width:40pxpx; height:40px;" /></a></td>-->
+                    <td>&emsp;&emsp;<a href="{% url 'profile' %}" class="cls1"><img src="{% static 'images/user profile logo.png' %}" style="width:40px; height:40px;"/></a></td>
+                </tr>
+            </table>
+        </div>
+        <h2 style="color:indigo;">Dance Videos</h2>
+        <p>Only first video is free to watch.</p><br />
+        <center>
+          {% if videos %}
+            <ul>
+                {% for video in videos %}
+                    <li>
+                    <h3>{{ video.title }}</h3>
+
+                    {% if video.is_free or purchased %}
+                       <div class="video-container">
+                        <video width="400" controls class="protected-video">
+                        <source src="{{ video.video_file.url }}" type="video/mp4">
+                        </video>
+                        <div class="watermark">
+                            {{request.user.username}}
+                        </div>
+                       </div>
+
+                    {% else %}
+                        <p>🔒 Locked</p>
+                        <a href="{% url 'pay' video.teacher.id %}">
+    Unlock All Videos of this teacher ₹1
+                        </a>
+                    {% endif %}
+                    </li>
+                    <br />
+                {% endfor %}
+            </ul>
+          {% else %}
+            <p>No dance videos available here yet.</p>
+          {% endif %}
+                
+        </center>
+        <script>
+            // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable keys (PrintScreen, DevTools)
+        document.addEventListener('keydown', function(e) {
+
+            if (e.key === 'PrintScreen') {
+                alert("Screen capture is disabled!");
+                navigator.clipboard.writeText('');
+            }
+
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'U')) {
+                e.preventDefault();
+            }
+
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+
+        // Pause & blur when tab is hidden
+        document.addEventListener("visibilitychange", function() {
+            const videos = document.querySelectorAll(".protected-video");
+
+            if (document.hidden) {
+                videos.forEach(video => {
+                    video.pause();
+                    video.classList.add("blur");
+                });
+            } else {
+                videos.forEach(video => {
+                    video.classList.remove("blur");
+                });
+            }
+        });
+        </script>
+    </body>
+</html>
+

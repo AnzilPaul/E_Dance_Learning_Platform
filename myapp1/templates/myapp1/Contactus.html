@@ -1,0 +1,62 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <title>E Dance </title>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style1.css' %}" />
+        <style>
+            .cls1{
+                color:white;
+                font-size:20px;
+            }
+            .cls2{
+                font-size:25px;
+            }
+            .cls3{
+                font-size:18px;
+            }
+            .nounderline{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="background-color:#00adb5;">
+            <table>
+                <tr>
+                    <td><img src="{% static 'images/dancelogo3.jpg' %}" style="width:50px; height:50px;" /></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'home1' %}" class="cls1 nounderline">Home</a></td>
+                    
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'about' %}" class="cls1 nounderline">About Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'contact' %}" class="cls1 nounderline">Contact Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_login' %}" class="cls1 nounderline">Login</a></td>
+
+                </tr>
+            </table>
+        </div>
+        <center>
+        
+                   <h4 class="cls2">CONTACT &nbsp;US</h4>
+                   
+
+                   <p class="cls3">
+                    Email<br />
+                    anzilbook2@gmail.com<br />
+                    <br />
+                    
+                    <br />
+                    Office Hours<br />
+                    Monday-Friday: 9:00 AM - 6:00 PM<br />
+                    Saturday: Closed<br />
+                    Sunday: Closed<br />
+                   </p>
+                
+                
+            
+        </center>
+        <br />
+        
+        
+        
+    </body>
+</html>

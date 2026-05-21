@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            .rectangle2{
+                width:500px;
+                height:80px;
+                border:0;
+                background-color:green;
+                text-align:center;
+            }
+            .rectangle2 a{
+                line-height:80px;
+                padding: 0 20px;
+                color:white;
+            }
+        </style>
+    </head>
+<body>
+    <center>
+<h2>Custom Admin Dashboard</h2>
+<br />
+<br />
+<div class=rectangle2>
+<a href="{% url 'add_category' %}">Add Category</a></div><br>
+<div class=rectangle2>
+<a href="{% url 'add_style' %}">Add Style</a></div><br>
+<div class=rectangle2>
+<a href="{% url 'add_teacher' %}">Add Teacher</a></div><br>
+<div class=rectangle2>
+<a href="{% url 'add_video' %}">Add Video</a></div><br>
+<div class=rectangle2>
+<a href="{% url 'video_list' %}">Videos List</a></div><br>
+<a href="{% url 'admin_logout' %}">Logout</a>
+    </center>
+</body>
+</html>

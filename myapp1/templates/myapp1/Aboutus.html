@@ -1,0 +1,71 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <title>E Dance </title>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style1.css' %}" />
+        <style>
+            .cls1{
+                color:white;
+                font-size:20px;
+            }
+            .cls2{
+                font-size:25px;
+            }
+            .cls3{
+                font-size:18px;
+            }
+            .nounderline{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="background-color:#00adb5;">
+            <table>
+                <tr>
+                    <td><img src="{% static 'images/dancelogo3.jpg' %}" style="width:50px; height:50px;" /></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'home1' %}" class="cls1 nounderline">Home</a></td>
+                    
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'about' %}" class="cls1 nounderline">About Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'contact' %}" class="cls1 nounderline">Contact Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_login' %}" class="cls1 nounderline">Login</a></td>
+
+                </tr>
+            </table>
+        </div>
+        <center>
+        
+                   <h4 class="cls2">ABOUT &nbsp;US</h4>
+                   <table>
+                    <tr>
+                        <td>
+                   <p class="cls3">In today's digital world, learning has gone beyond traditional classrooms, and the art of dance is no exception. The E-Dance Learning Platform was created with the vision of bringing dance education to everyone, everywhere. Our platform serves as a bridge between passionate learners and skilled instructors, making it possible for anyone to explore the beauty of dance from the comfort of their home.
+
+Dance is not just a form of entertainment; it is a powerful medium of expression, creativity, and emotion. At E-Dance, we believe that everyone has the ability to dance, regardless of age, background, or experience level. Our goal is to nurture this ability by providing structured lessons, easy-to-follow tutorials, and a supportive learning environment.
+
+The platform offers a wide range of dance styles, including classical, contemporary, hip-hop, freestyle, and more. Each course is carefully designed to guide learners step by step, helping them build confidence and improve their skills over time. Whether you are a beginner taking your first steps or an experienced dancer looking to refine your technique, E-Dance provides content suitable for all levels.
+
+One of the key strengths of our platform is flexibility. Learners can access video lessons anytime and anywhere, allowing them to practice at their own pace. This removes the limitations of time and location, making dance education more accessible than ever before.
+
+Our mission is to make high-quality dance education affordable and accessible to all. We aim to inspire creativity, boost confidence, and promote a healthy lifestyle through dance. By combining technology with artistic expression, we strive to create an engaging and enjoyable learning experience.
+
+Looking ahead, our vision is to build a global community of dancers who learn, grow, and inspire each other. We are committed to continuously improving our platform by adding new courses, features, and opportunities for learners.
+
+In conclusion, the E-Dance Learning Platform is more than just a website—it is a space where passion meets learning, and where every step taken brings you closer to mastering the art of dance.
+                    
+                   </p>
+                
+                </td>
+                <td>
+                    <img src="{% static 'images/aboutusimg.jpg' %}" height="500" width="700" />
+                </td>
+            </tr>
+        </table>
+        </center>
+        <br />
+        
+        
+        
+    </body>
+</html>

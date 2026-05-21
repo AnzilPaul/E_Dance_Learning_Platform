@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <title>E Dance Home Page</title>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style1.css' %}" />
+        <style>
+            .cls1{
+                color:white;
+                font-size:20px;
+            }
+            .cls2{
+                font-size:25px;
+            }
+            .cls3{
+                font-size:18px;
+            }
+            .nounderline{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="background-color:#00adb5;">
+            <table>
+                <tr>
+                    <td><img src="{% static 'images/dancelogo3.jpg' %}" style="width:50px; height:50px;" /></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'home1' %}" class="cls1 nounderline">Home</a></td>
+                    
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'about' %}" class="cls1 nounderline">About Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'contact' %}" class="cls1 nounderline">Contact Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_login' %}" class="cls1 nounderline">Login</a></td>
+
+                </tr>
+            </table>
+        </div>
+        <center>
+        <table>
+            <tr>
+                <td><br /><br />
+                   <h4 class="cls2">WELCOME TO  &nbsp;OUR &nbsp;E DANCE &nbsp;LEARNING </h4>
+                   <h4 class="cls2">APP!</h4>
+                   <p class="cls3">We provide an  easy-to-use<br />
+                    E-Dance Learning App that<br />
+                    allows you to learn various types <br />
+                    of danceforms from various professional <br />
+                    teachers in a single mobile app.<br />
+                    You will really enjoy this experience.<br />
+                    Please signup and login to watch videos of <br />
+                    various professional artists.<br />
+                    </p>
+                </td>
+                <td><br /><br />
+                    &emsp;&emsp;&emsp;
+                </td>
+                <td><br /><br /><br />
+                    <img src="{% static 'images/dancehomeimage.jpg' %}" style="width:750px; height:390px;"/>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <!--&emsp;&emsp;&emsp;&emsp;<input type="submit" name="s1" value="Sign Up" style="background-color:#500caf; color:white; width:150px; height:49px; border:0; border-radius: 40px; font-size:20px; font: bold 1px;" />-->
+                    <a href="{% url 'register' %}"><button type="button" style="background-color:#500caf; color:white; width:150px; height:49px; border:0; border-radius: 40px; font-size:20px; font: bold 1px;" >Sign Up</button></a>
+                </td>
+            </tr>
+        </table>
+        </center>
+        <br />
+     <table>
+        <tr>
+            <td>
+                &emsp;&emsp;&emsp;&emsp;&emsp;       
+                &emsp;&emsp;&emsp;&emsp;&emsp;  
+            </td>
+            <td>
+                Quick Links<br /><br />
+                <a href="{% url 'privacy' %}">Privacy Policy</a>&emsp;&emsp;
+                <a href="{% url 'terms' %}">Terms</a>&emsp;&emsp;
+                <a href="{% url 'shipping' %}">Shipping Policy</a>&emsp;&emsp;
+                <a href="{% url 'refund' %}">Refund Policy</a>&emsp;&emsp;
+            </td>
+        </tr>
+    </table>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <title>E Dance</title>
+         <link type="text/css" rel="stylesheet" href="{% static 'css/style1.css' %}" />
+        <style>
+            .cls1{
+                color:white;
+                font-size:20px;
+            }
+            .cls2{
+                font-size:18px;
+            }
+            .nounderline{
+                text-decoration: none;
+            } 
+        </style>
+    </head>
+    <body>
+        <div style="background-color:#00adb5;">
+            <table>
+                <tr>
+                    <td><img src="{% static 'images/dancelogo3.jpg' %}" style="width:50px; height:50px;" /></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'home1' %}" class="cls1 nounderline">Home</a></td>
+                    
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'about' %}" class="cls1 nounderline">About Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'contact' %}" class="cls1 nounderline">Contact Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_login' %}" class="cls1 nounderline">Login</a></td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+        <table>
+            <tr>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   
+                </td>
+                <td>
+                    <img src="{% static 'images/LoginImg.jpg' %}">
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                </td>
+                
+                <td>
+                    <h1 style =color:indigo>&nbsp;&nbsp;&nbsp;&nbsp;Login Failed.</h1>
+                    <h3 style =color:red>&nbsp;&nbsp;&nbsp;&nbsp;Invalid Login details.</h3>
+                    <h3 style =color:red>&nbsp;&nbsp;&nbsp;&nbsp;Please login again with correct credentials.</h3>
+                    <form action="{% url 'user_login' %}" method="POST">
+                        {% csrf_token %}
+                        <label for="email" style="color:indigo;" class="cls2"><b>Email Address</b></label><span style="color:red;">*</span> <br />
+                        <input type="email" name="email" placeholder="Email Address" style="background-color:#d6d3cf; width:400px; height:33px; border:0;" required/>
+                        <br />
+                        <label for="password" style="color:indigo;" class="cls2"><b>Password</b></label><span style="color:red;">*</span> <br />
+                        <input type="password" name="password" placeholder="Password" style="background-color:#d6d3cf; width:400px; height:33px; border:0;" required/>
+                        <br />
+                        
+                        <!--&nbsp;<a href="#" style="color:blue;"><i>Forgot Password?</i></a>-->
+                        <br />
+                        <br />
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="submit" name="loginbtn" value="Login" style="background-color:#2fc0ff; border:0; color:white; font-size:20px; width:180px; height:50px;" />
+                    </form>
+                </td>
+                
+            </tr>
+        </table>
+        
+    </body>
+</html>

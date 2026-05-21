@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype HTML>
+<html>
+    <head>
+        <title>E Dance</title>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style1.css' %}" />
+        <style>
+            .cls1{
+                color:white;
+                font-size:20px;
+            }
+            .cls2{
+                font-size:18px;
+            }
+            .rectangle{
+                width:300px;
+                height:180px;
+                border:0;
+                background-color:white;
+            }
+            .nounderline{
+                text-decoration: none;
+            } 
+            .rectangle2{
+                width:500px;
+                height:80px;
+                border:0;
+                background-color:blue;
+                text-align:center;
+            }
+            .rectangle2 a{
+                line-height:80px;
+                padding: 0 20px;
+                color:white;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div style="background-color:#00adb5;">
+            <table>
+                <tr>
+                    <td><img src="{% static 'images/dancelogo3.jpg' %}" style="width:50px; height:50px;" /></td>
+                    <!--<td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1 nounderline">Home</a></td>-->
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'home2' %}" class="cls1 nounderline">Dance Hub</a></td>
+                    <!--<td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1 nounderline">About Us</a></td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1 nounderline">Contact Us</a></td>-->
+                    <td>
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;
+                    </td>
+                    <td>
+                    {% if user.is_authenticated %}
+                        &emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_logout' %}" class="cls1 nounderline">Logout</a>
+                    {% else %}
+                            &emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'user_login' %}" class="cls1 nounderline">Login</a>
+                    {% endif %}
+                    </td>
+                            <!--<td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="#" class="cls1"><img src="{% static 'images/notify logo.png' %}" style="width:40pxpx; height:40px;" /></a></td>-->
+                    <td>&emsp;&emsp;<a href="{% url 'profile' %}" class="cls1"><img src="{% static 'images/user profile logo.png' %}" style="width:40px; height:40px;"/></a></td>
+                </tr>
+            </table>
+        </div>
+        <h2 style="color:indigo;">Dance Teachers</h2>
+        <p>Choose  your  desired  dance Teacher.</p><br />
+        <center>
+          {% if teachers %}
+            <ul>
+                {% for teacher in teachers %}
+                    <li>
+                        <div class=rectangle2>
+                        <a href="{% url 'videos' teacher.id %}">
+                            {{teacher.name}}
+                        </a>
+                        </div>
+                    </li>
+                    <br />
+                {% endfor %}
+            </ul>
+          {% else %}
+            <p>No dance teachers available in this style yet.</p>
+          {% endif %}
+                
+        </center>
+    </body>
+</html>
+

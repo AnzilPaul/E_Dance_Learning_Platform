@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            .cls1{
+                color:white;
+                font-size:20px;
+            }
+            .cls2{
+                font-size:18px;
+            }
+            .nounderline{
+                text-decoration: none;
+            } 
+        </style>
+    </head>
+<body>
+    <center>
+<h2>Admin Signup</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <label for="username" style="color:indigo;" class="cls2"><b>Username</b></label><span style="color:red;">*</span><br />
+    <input type="text" name="username" placeholder="Username" style="background-color:#d6d3cf; width:400px; height:33px; border:0;" required /><br><br />
+    <label for="email" style="color:indigo;" class="cls2"><b>Email Address</b></label><span style="color:red;">*</span><br />
+    <input type="email" name="email" placeholder="Email" style="background-color:#d6d3cf; width:400px; height:33px; border:0;" required /><br><br />
+
+    <label for="password" style="color:indigo;" class="cls2"><b>Password</b></label><span style="color:red;">*</span><br />
+    <input type="password" name="password" placeholder="Password" style="background-color:#d6d3cf; width:400px; height:33px; border:0;" required /><br><br />
+
+    <label for="confirm_password" style="color:indigo;" class="cls2"><b>Confirm Password</b></label><span style="color:red;">*</span><br />
+    <input type="password" name="confirm_password" placeholder="Confirm Password" style="background-color:#d6d3cf; width:400px; height:33px; border:0;" required /><br><br />
+
+    
+
+    <button type="submit" style="width:150px; height:50px; background-color:indigo; color: white;">Signup</button>
+</form>
+</center>
+</body>
+</html>

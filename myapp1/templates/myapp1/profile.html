@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E Dance- User Profile</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f7;
+        }
+
+        .navbar {
+            background-color: #0fa3a3;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-logo {
+            width: 70px;
+            height: 70px;
+            background-color: #0fa3a3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        .status {
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .online { color: green; }
+        .offline { color: red; }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .summary-box {
+            background: #f7f9fb;
+            padding: 20px;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .action-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .button {
+            background-color: #0fa3a3;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div>E Dance Learning Platform</div>
+    <div>
+        <a href="{% url 'home2' %}">Dashboard</a>
+        <a href="{% url 'profile' %}">Profile</a>
+        
+    </div>
+</div>
+{% if messages %}
+    {% for message in messages %}
+        <div style="padding:10px; background:#d4edda; color:#155724; margin:10px;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<div class="container">
+
+    <h2>USER PROFILE</h2>
+
+    <!-- Profile Card -->
+    <div class="card">
+        <div class="profile-header">
+            <div class="profile-info">
+                
+                <div>
+                    <h3><strong>Username:</strong> {{ user.username }}</h3>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    <!-- Quick Actions -->
+    <div class="card">
+        <div class="section-title">QUICK ACTIONS</div>
+       <div class="action-item">
+    <a href="{% url 'edit_profile' %}" style="text-decoration:none; color:inherit;">
+        Edit Profile Information
+    </a>
+</div>
+
+<div class="action-item">
+    <a href="{% url 'change_password' %}" style="text-decoration:none; color:inherit;">
+        Change Password
+    </a>
+    </div>
+    <br />
+    <br />
+<div class="action-item">    
+     <a href="{% url 'user_logout' %}" style="text-decoration:none; color:inherit;">
+        Logout
+    </a>
+
+    
+
+</div>
+
+
+
+</body>
+</html>
+

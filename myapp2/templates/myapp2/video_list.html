@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            .rectangle2{
+                width:150px;
+                height:30px;
+                border:0;
+                background-color:green;
+                text-align:center;
+            }
+            .rectangle2 a{
+                line-height:30px;
+                padding: 0 20px;
+                color:white;
+            }
+            .rectangle3{
+                width:100px;
+                height:30px;
+                border:0;
+                background-color:green;
+                text-align:center;
+            }
+            .rectangle3 a{
+                line-height:30px;
+                padding: 0 20px;
+                color:white;
+            }
+        </style>
+    </head>
+<body>
+    <center>
+<h2>All Videos</h2>
+<br />
+<div class=rectangle2>
+<a href="{% url 'add_video' %}">Add New Video</a></div>
+<br />
+<br />
+<table border="1">
+<tr>
+    <th>Title</th>
+    <th>Free?</th>
+    
+    <th>Actions</th>
+</tr>
+
+{% for video in videos %}
+<tr>
+    <td>{{ video.title }}</td>
+    <td>{{ video.is_free }}</td>
+    
+
+    <td>
+        <a href="{% url 'edit_video' video.id %}">Edit</a>
+        <a href="{% url 'delete_video' video.id %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+<br />
+<div class=rectangle3>
+<a href="{% url 'admin_logout' %}">Logout</a></div>
+</center>
+</body>
+</html>
